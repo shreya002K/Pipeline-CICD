@@ -74,10 +74,10 @@ pipeline {
         }
             steps {
                 script{echo 'deploying the application'
-                withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
+                /* withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
                     sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
                     sh "docker push 20it053/spring-boot:${IMAGE_NAME}"
-                }}
+                }} */
                 
              }
         }
@@ -85,6 +85,7 @@ pipeline {
         stage('commit and push'){
             steps{
                 script{
+                    /*
                     withCredentials([usernamePassword(credentialsId: 'git-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
                         //def encodedPassword = URLEncoder.encode("$PASSWORD",'UTF-8')
                         sh 'git config --global user.email "learnwithparth.in@gmail.com"'
@@ -102,7 +103,7 @@ pipeline {
                         //sh 'git push origin HEAD:master'
                         sh "git push -u origin master"
                         //sh "git push https://${USERNAME}:${PASSWORD}@github.com/learnwithparth/springboot-jenkins.git"
-                        }
+                        } */
                 }
             }
         }
